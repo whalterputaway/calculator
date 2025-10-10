@@ -16,26 +16,19 @@ def show_help(event="None"):
     about.place(x=5,y=5)
 def digit_click(digit):
     current = label_workpad['text']
-    if current == "Делить на ноль нельзя!" or current == "Неверный ввод!":
-        current = "0"
-    if current == "0":
-        label_workpad['text'] = str(digit)
-    else:
-        label_workpad['text'] = current + str(digit)
+    if current == "Делить на ноль нельзя!" or current == "Неверный ввод!": current = "0"
+    if current == "0": label_workpad['text'] = str(digit)
+    else: label_workpad['text'] = current + str(digit)
 def add_to_memory(opera):
     current = label_workpad["text"]
     memory.append(current)
 def negate_click():
-    if int(label_workpad["text"]) >= 0:
-        label_workpad["text"] = "-"+label_workpad["text"]
-    elif label_workpad["text"][0]=="-":
-        label_workpad["text"] = label_workpad["text"][1:]
+    if int(label_workpad["text"]) >= 0: label_workpad["text"] = "-"+label_workpad["text"]
+    elif label_workpad["text"][0]=="-": label_workpad["text"] = label_workpad["text"][1:]
 def sqrt_click():
     current = float(label_workpad["text"])
-    if current < 0:
-        label_workpad["text"] = "Неверный ввод!"
-    else:
-        label_workpad["text"] = (current**0.5)
+    if current < 0: label_workpad["text"] = "Неверный ввод!"
+    else: label_workpad["text"] = (current**0.5)
 def square_click():
     current = float(label_workpad["text"])
     label_workpad["text"] = current ** 2
@@ -51,22 +44,17 @@ def equal_click(operation):
     memory.append(float(label_workpad["text"]))
     operations = {"+": lambda: memory[0] + memory[1], "-": lambda: memory[0] - memory[1],"*": lambda: memory[0] * memory[1],"/": lambda: "Делить на ноль нельзя!" if memory[1] == 0 else memory[0] / memory[1]}
     result = operations[operation]()
-    if isinstance(result, str):
-        label_workpad["text"] = result
+    if isinstance(result, str): label_workpad["text"] = result
     else:
-        if result == int(result):
-            label_workpad["text"] = str(int(result))
-        else:
-            label_workpad["text"] = str(result)
+        if result == int(result): label_workpad["text"] = str(int(result))
+        else: label_workpad["text"] = str(result)
     memory.clear()
 def button_delete_click():
     label_workpad["text"] = label_workpad["text"][0:-1]
-    if label_workpad["text"]=="" or label_workpad["text"]=="0":
-        label_workpad["text"]="0"
+    if label_workpad["text"]=="" or label_workpad["text"]=="0": label_workpad["text"]="0"
 def button_procent_click():
     memory.append(float(label_workpad["text"]))
-    if what_to_do=="*":
-        label_workpad["text"] =(memory[0]*memory[1])*0.01
+    if what_to_do=="*": label_workpad["text"] =(memory[0]*memory[1])*0.01
     memory.clear()
 def button_CE_click():
     label_workpad["text"] = "0"
