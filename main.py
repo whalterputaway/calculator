@@ -1,15 +1,11 @@
 from tkinter import *
 main = Tk()
 main.title("Калькулятор")
-main.geometry("400x400+800+400")
-main.minsize(200,150)
-main.maxsize(400,350)
-main.iconbitmap(default="C:\\Users\\modes\\BSBO-21-24\\source\\calculator.ico")
+main.geometry("400x350+800+400")
 def show_help(event="None"):
     help_window = Toplevel(main)
     help_window.title("Справочная информация")
     help_window.geometry("650x150+600+350")
-    help_window.resizable(YES, YES)
     help_window.transient(main)
     help_window.grab_set()
     about = Label(help_window, text="Описание: Супер-калькулятор\nВозможности: Сложение/Вычитание/Умножение/Деление\nВозведение в квадрат/Поиск квадратного корня/Вычисление процента\nСлова благодарности: Хотел бы выразить огромное спасибо Цвырко Олегу Леонидовичу, за полученные знания!\n © Нгуен Чыонг 2025.",anchor="center")
