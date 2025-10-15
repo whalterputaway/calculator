@@ -11,22 +11,13 @@ def show_help(event="None"):
     about = Label(help_window, text="Описание: Супер-калькулятор\nВозможности: Сложение/Вычитание/Умножение/Деление\nВозведение в квадрат/Поиск квадратного корня/Вычисление процента\nСлова благодарности: Хотел бы выразить огромное спасибо Папе и Маме, за все что они для меня сделали и не сделали!\n © Нгуен Чыонг 2025.",anchor="center")
     about.place(x=5,y=5)
 def digit_click(digit):
-    if label_workpad['text'] == "Делить на ноль нельзя!" or label_workpad['text'] == "Неверный ввод!" or label_workpad['text']=="0": 
-        label_workpad['text'] = str(digit)
-    else: 
-        label_workpad['text'] = label_workpad['text'] + str(digit)
+        label_workpad['text'] = str(digit) if (label_workpad['text'] == "Делить на ноль нельзя!" or label_workpad['text'] == "Неверный ввод!" or label_workpad['text']=="0") else label_workpad['text'] + str(digit)
 def add_to_memory(opera):
     memory.append(label_workpad["text"])
 def negate_click():
-    if label_workpad["text"][0][0] != '-':
-        label_workpad["text"] = "-" + label_workpad["text"]
-    else:
-        label_workpad['text'] = label_workpad['text'].replace("-","",1)
+        label_workpad["text"] = "-" + label_workpad["text"] if label_workpad["text"][0][0] != '-' else label_workpad['text'].replace("-","",1)
 def isdex():
-    if "." in label_workpad["text"]:
-        return float(label_workpad["text"])
-    else:
-        return int(label_workpad["text"])
+        return float(label_workpad["text"]) if "." in label_workpad["text"] else int(label_workpad["text"])
 def sqrt_click():
     label_workpad["text"] = str(isdex()**0.5)
 def square_click():
@@ -81,8 +72,8 @@ button7 = Button(text="7", width=10, height=2,font=(5), command=lambda: digit_cl
 button8 = Button(text="8", width=10, height=2,font=(5), command=lambda: digit_click(8)).place(x = 100, y = 150)
 button9 = Button(text="9", width=10, height=2, font=(5),command=lambda: digit_click(9)).place(x = 200, y = 150)
 button0 = Button(text="0", width=10, height=2,font=(5), command=lambda: digit_click(0)).place(x = 100, y = 300)
-button_comma = Button(text=".", width=10, height=2,font=(5),command=lambda:digit_click(".")).place(x=0, y=300)
-button_negate = Button(text="+/-", width=10, height=2,font=(5),command=negate_click).place(x=200, y=300)
+button_comma = Button(text=".", width=10, height=2,font=(5),command=lambda:digit_click(".")).place(x=200, y=300)
+button_negate = Button(text="+/-", width=10, height=2,font=(5),command=negate_click).place(x=0, y=300)
 button_sqrt = Button(text="√x", width=10, height=2,font=(5), command=sqrt_click).place(x=200, y=100)
 button_square = Button(text="x²", width=10, height=2,font=(5),command=square_click).place(x=100, y=100)
 button_1divx = Button(text="1/x", width=10, height=2, font=(5),command=click_1divx).place(x=0, y=100)
