@@ -22,29 +22,17 @@ def negate_click():
         label_workpad["text"] = "-" + label_workpad["text"]
     else:
         label_workpad['text'] = label_workpad['text'].replace("-","",1)
-
-
 def isdex():
     if "." in label_workpad["text"]:
         return float(label_workpad["text"])
     else:
         return int(label_workpad["text"])
 def sqrt_click():
-    isdex()
     label_workpad["text"] = str(isdex()**0.5)
 def square_click():
-    isdex()
     label_workpad["text"] = str(isdex() ** 2)
 def click_1divx():
-    isdex()
     label_workpad["text"] = str(1 / isdex())
-
-
-
-
-
-
-
 def operation_click(opera):
     memory.append(float(label_workpad["text"]))
     global what_to_do
